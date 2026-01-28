@@ -1,26 +1,196 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-dark: #0f0f13;
+  --bg-accent: #1a1a25;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #7c7cff;
+  --accent-secondary: #ff6b6b;
+  --accent-tertiary: #4ecdc4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  position: relative;
+}
+
+.section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+image:hover {
+  transform: scale(1.05);
+}
+
+/* Vibrant gradient backgrounds for each section */
+#about {
+  background: linear-gradient(135deg, #0f0f13 0%, #1a0033 50%, #0f0f13 100%);
+}
+
+#skills {
+  background: linear-gradient(135deg, #0f0f13 0%, #001a33 50%, #0f0f13 100%);
+}
+
+#socials {
+  background: linear-gradient(135deg, #0f0f13 0%, #330033 50%, #0f0f13 100%);
+}
+
+/* Animated gradient accent lines */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7c7cff, #ff6b6b, #4ecdc4, transparent);
+  opacity: 0.5;
+}
+
+/* Fade in animation */
+.fade {
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading styles */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7c7cff, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4ecdc4, #7c7cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #7c7cff;
+}
+
+p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #b3b3b3;
+  line-height: 1.8;
+}
+
+ul, li {
+  list-style: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #b3b3b3;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+ul li:hover {
+  color: #7c7cff;
+}
+
+ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Link styles */
+a {
+  color: #7c7cff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7c7cff, #ff6b6b);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:hover {
+  color: #ff6b6b;
+}
+
+/* Section content wrapper */
+.section-content {
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
