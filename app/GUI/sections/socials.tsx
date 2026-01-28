@@ -4,10 +4,10 @@ import Section from "@/app/GUI/components/sectionWrap";
 
 export default function Socials() {
   const socialLinks = [
-    { name: "GitHub", url: "#", icon: "👨‍💻" },
-    { name: "LinkedIn", url: "#", icon: "💼" },
-    { name: "Email", url: "#", icon: "✉️" },
-    { name: "Twitter", url: "#", icon: "🐦" },
+    { name: "GitHub", url: "https://github.com/JhohnEstrella", icon: "👨‍💻" },
+    { name: "Vercel", url: "https://vercel.com/jhohn-bennidict-estrellas-projects", icon: "💼" },
+    { name: "Email", url: "mailto:jboestre@addu.edu.ph", icon: "✉️" },
+    { name: "Facebook", url: "https://www.facebook.com/jaybiestrey/", icon: "👥" },
   ];
 
   return (
@@ -15,13 +15,17 @@ export default function Socials() {
       <div style={styles.container}>
         <h2>Let's Connect</h2>
         <p style={styles.subtitle}>
-          Feel free to reach out for collaborations or just a friendly hello
+          I’d love to hear from you! Whether you have questions, want to collaborate on a project, or just want to say hi, 
+          feel free to reach out. You can connect with me through any of the links below, and I’ll be happy to get in touch. 
+          Don’t hesitate! Let’s start a conversation and explore opportunities together!
         </p>
         <div style={styles.socialGrid}>
           {socialLinks.map((social) => (
             <a
               key={social.name}
               href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               style={styles.socialLink}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.background =
@@ -51,6 +55,11 @@ const styles: any = {
     width: "100%",
     maxWidth: "600px",
     textAlign: "center" as const,
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "center",
+    justifyContent: "center",
   },
   subtitle: {
     fontSize: "1.1rem",
@@ -63,6 +72,7 @@ const styles: any = {
     gridTemplateColumns: "repeat(2, 1fr)",
     gap: "1.5rem",
     marginTop: "2rem",
+    width: "100%",
   },
   socialLink: {
     display: "flex",

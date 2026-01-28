@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -32,17 +33,39 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   position: relative;
+  scroll-padding: 70px;
+}
+
+/* Slower scroll with scroll-snap */
+.scroll-container {
+  scroll-snap-stop: always;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+/* Add smooth scrolling delay */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
 }
 
 .section {
   min-height: 100vh;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem;
   position: relative;
   overflow: hidden;
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
 }
 
 image:hover {
@@ -74,7 +97,29 @@ image:hover {
   opacity: 0.5;
 }
 
-/* Fade in animation */
+/* Fade animations for sections */
+.section-content {
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.section-content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.section-content.fade-out {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition-delay: 0s;
+}
+
+/* Legacy fade class for compatibility */
 .fade {
   animation: fadeIn 1s ease-out forwards;
   opacity: 0;
@@ -179,13 +224,6 @@ a:hover::after {
 
 a:hover {
   color: #ff6b6b;
-}
-
-/* Section content wrapper */
-.section-content {
-  width: 100%;
-  max-width: 1200px;
-  z-index: 1;
 }
 
 /* Smooth transitions */
