@@ -46,7 +46,7 @@ export default function Socials() {
   );
 }
 
-const styles = {
+const styles: any = {
   container: {
     width: "100%",
     maxWidth: "600px",
@@ -82,3 +82,21 @@ const styles = {
     marginBottom: "0.75rem",
   },
 };
+
+// Mobile responsive adjustments
+if (typeof window !== "undefined" && window.innerWidth <= 768) {
+  styles.socialGrid = {
+    ...styles.socialGrid,
+    gridTemplateColumns: "1fr",
+    gap: "1rem",
+  };
+  styles.socialLink = {
+    ...styles.socialLink,
+    padding: "1.5rem",
+  };
+  styles.socialIcon = {
+    ...styles.socialIcon,
+    fontSize: "2rem",
+    marginBottom: "0.5rem",
+  };
+}

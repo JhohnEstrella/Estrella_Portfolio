@@ -101,6 +101,7 @@ const styles = {
     background: "linear-gradient(135deg, #7c7cff, #ff6b6b)",
     WebkitBackgroundClip: "text" as const,
     WebkitTextFillColor: "transparent",
+    whiteSpace: "nowrap" as const,
   },
   navLinks: {
     display: "flex",
@@ -124,3 +125,28 @@ const styles = {
     borderBottom: "2px solid #7c7cff",
   },
 };
+
+// Mobile responsive adjustments
+if (typeof window !== "undefined" && window.innerWidth <= 768) {
+  styles.nav = {
+    ...styles.nav,
+    height: "60px",
+  };
+  styles.navContent = {
+    ...styles.navContent,
+    padding: "0 1rem",
+  };
+  styles.logo = {
+    ...styles.logo,
+    fontSize: "1.2rem",
+  };
+  styles.navLinks = {
+    ...styles.navLinks,
+    gap: "1.5rem",
+  };
+  styles.navLink = {
+    ...styles.navLink,
+    fontSize: "0.85rem",
+    padding: "0.25rem 0",
+  };
+}

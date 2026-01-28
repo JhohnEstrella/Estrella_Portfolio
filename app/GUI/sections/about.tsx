@@ -27,16 +27,17 @@ export default function About() {
   );
 }
 
-const styles = {
+const styles: any = {
   wrapper: {
     display: "flex",
     alignItems: "center",
     gap: "4rem",
     width: "100%",
     maxWidth: "1200px",
+    flexWrap: "wrap" as const,
   },
   container: {
-    flex: 1,
+    flex: "1 1 300px",
     maxWidth: "600px",
   },
   imageContainer: {
@@ -54,6 +55,7 @@ const styles = {
     display: "flex",
     gap: "1rem",
     marginTop: "2rem",
+    flexWrap: "wrap" as const,
   },
   ctaButton: {
     padding: "0.875rem 2rem",
@@ -78,3 +80,20 @@ const styles = {
     boxShadow: "0 8px 32px rgba(124, 124, 255, 0.2)",
   },
 };
+
+// Mobile responsive adjustments
+if (typeof window !== "undefined" && window.innerWidth <= 768) {
+  styles.wrapper = {
+    ...styles.wrapper,
+    flexDirection: "column" as const,
+    gap: "2rem",
+  };
+  styles.imageContainer = {
+    ...styles.imageContainer,
+    marginLeft: "0",
+  };
+  styles.subtitle = {
+    ...styles.subtitle,
+    fontSize: "1rem",
+  };
+}

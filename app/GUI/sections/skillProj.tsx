@@ -88,3 +88,20 @@ const styles = {
     marginTop: "2rem",
   },
 };
+
+// Mobile responsive adjustments
+if (typeof window !== "undefined" && window.innerWidth <= 768) {
+  styles.skillsGrid = {
+    ...styles.skillsGrid,
+    gridTemplateColumns: "1fr",
+    gap: "1.5rem",
+  };
+  styles.skillsSection = {
+    ...styles.skillsSection,
+    marginBottom: "2rem",
+  };
+  styles.projectsSection = {
+    ...styles.projectsSection,
+    marginTop: "1.5rem",
+  };
+}

@@ -194,3 +194,111 @@ a:hover {
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
+
+/* RESPONSIVE DESIGN */
+/* Tablet (768px and below) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 3rem 2rem;
+  }
+
+  .section-content {
+    max-width: 100%;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .scroll-container {
+    height: 100vh;
+  }
+
+  .section {
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+    padding-top: 90px;
+  }
+
+  .section-content {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  ul li {
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small phones (480px and below) */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 1.5rem 1rem;
+    padding-top: 80px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}

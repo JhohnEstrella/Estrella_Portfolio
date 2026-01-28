@@ -24,3 +24,12 @@ const styles = {
     marginTop: "1rem",
   },
 };
+
+// Mobile responsive adjustments
+if (typeof window !== "undefined" && window.innerWidth <= 768) {
+  styles.grid = {
+    ...styles.grid,
+    gridTemplateColumns: "1fr",
+    gap: "1rem",
+  };
+}
