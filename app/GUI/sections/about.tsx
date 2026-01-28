@@ -4,11 +4,15 @@ import ProfileImage from "@/app/GUI/components/myImage";
 export default function About() {
   return (
     <Section id="about">
-      <div style={styles.wrapper}>
-        <div style={styles.container}>
-          <h1>Jhohn Bennidict Estrella</h1>
-          <h2>Aspiring Software Developer</h2>
-          <p style={styles.subtitle}>
+      <div className="flex items-center gap-20 w-full max-w-7xl flex-wrap lg:flex-nowrap md:flex-col md:gap-12">
+        <div className="flex-1 min-w-[300px] max-w-2xl md:max-w-full section-content fade-in">
+          <h1 className="font-poppins text-6xl lg:text-5xl md:text-4xl sm:text-3xl font-bold gradient-text-primary mb-4 leading-tight">
+            Jhohn Bennidict Estrella
+          </h1>
+          <h2 className="font-poppins text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold gradient-text-secondary mb-8 md:mb-6">
+            Aspiring Software Developer
+          </h2>
+          <p className="text-lg md:text-base sm:text-sm text-[#b3b3b3] leading-relaxed mb-8 text-justify">
             I'm a Computer Science student who enjoys building thoughtful, efficient, and scalable software solutions. I'm 
             particularly interested in backend development, systems, and how technology can be used responsibly to support 
             learning and real-world problem solving. As a student and creative problem solver, I value clean design, clear 
@@ -16,84 +20,13 @@ export default function About() {
             into practical applications. My goal is to keep growing both technically and creatively as I prepare for a future 
             in the tech industry.
           </p>
-          <div style={styles.cta}>
+          <div className="flex gap-4 mt-8 flex-wrap">
           </div>
         </div>
-        <div style={styles.imageContainer}>
+        <div className="flex-shrink-0 w-[400px] h-[400px] lg:w-[350px] lg:h-[350px] md:w-[300px] md:h-[300px] section-content fade-in" style={{animationDelay: '0.3s'}}>
           <ProfileImage />
         </div>
       </div>
     </Section>
   );
-}
-
-const styles: any = {
-  wrapper: {
-    display: "flex",
-    alignItems: "center",
-    gap: "4rem",
-    width: "100%",
-    maxWidth: "1200px",
-    flexWrap: "wrap" as const,
-  },
-  container: {
-    flex: "1 1 300px",
-    maxWidth: "600px",
-  },
-  imageContainer: {
-    flexShrink: 0,
-    marginLeft: "8.5rem",
-  },
-  subtitle: {
-    fontSize: "1.2rem",
-    lineHeight: "1.8",
-    marginBottom: "2rem",
-    color: "#b3b3b3",
-    textAlign: "justify" as const,
-  },
-  cta: {
-    display: "flex",
-    gap: "1rem",
-    marginTop: "2rem",
-    flexWrap: "wrap" as const,
-  },
-  ctaButton: {
-    padding: "0.875rem 2rem",
-    fontSize: "1rem",
-    fontFamily: "Poppins, sans-serif",
-    fontWeight: "600",
-    border: "2px solid #7c7cff",
-    background: "#7c7cff",
-    color: "#0f0f13",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-  },
-  ctaButtonSecondary: {
-    background: "transparent",
-    color: "#7c7cff",
-  },
-  image: {
-    borderRadius: "50%",
-    objectFit: "cover" as const,
-    border: "4px solid rgba(124, 124, 255, 0.3)",
-    boxShadow: "0 8px 32px rgba(124, 124, 255, 0.2)",
-  },
-};
-
-// Mobile responsive adjustments
-if (typeof window !== "undefined" && window.innerWidth <= 768) {
-  styles.wrapper = {
-    ...styles.wrapper,
-    flexDirection: "column" as const,
-    gap: "2rem",
-  };
-  styles.imageContainer = {
-    ...styles.imageContainer,
-    marginLeft: "0",
-  };
-  styles.subtitle = {
-    ...styles.subtitle,
-    fontSize: "1rem",
-  };
 }

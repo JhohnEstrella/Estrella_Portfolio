@@ -22,25 +22,9 @@ export default function ProfileImage() {
 
   const handleClick = () => setClicked(true);
 
-  const styles = {
-    wrapper: {
-      borderRadius: "50%",
-      padding: "6px",
-      background: "linear-gradient(135deg, #7c7cff, #ff6b6b)",
-      cursor: "pointer",
-      transition: "transform 0.3s ease",
-    },
-    image: {
-      borderRadius: "50%",
-      objectFit: "cover" as const,
-      border: "4px solid rgba(124, 124, 255, 0.3)",
-      boxShadow: "0 8px 32px rgba(124, 124, 255, 0.2)",
-    },
-  };
-
   return (
     <div
-      style={styles.wrapper}
+      className="rounded-full p-2 bg-gradient-to-br from-primary-purple via-primary-red to-primary-teal cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-primary-purple/40 hover:scale-105"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -50,7 +34,7 @@ export default function ProfileImage() {
         alt="Jhohn Bennidict Estrella"
         width={400}
         height={400}
-        style={styles.image}
+        className="rounded-full object-cover border-[6px] border-[#0f0f13] shadow-xl shadow-primary-purple/30 transition-transform duration-300"
         priority
       />
     </div>

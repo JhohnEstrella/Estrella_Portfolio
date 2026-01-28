@@ -8,13 +8,11 @@ export default function TopNavBar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["about", "skills", "socials"];
-      const scrollContainer = document.querySelector(".scroll-container");
       
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Check if section is in viewport (considering the navbar height)
           if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
             setActiveSection(sectionId);
             break;
@@ -48,18 +46,27 @@ export default function TopNavBar() {
   ];
 
   return (
-    <nav style={styles.nav}>
-      <div style={styles.navContent}>
-        <div style={styles.logo}>⚡JE </div>
-        <div style={styles.navLinks}>
+    <nav className="fixed top-0 left-0 w-full h-[70px] flex justify-center items-center bg-[rgba(15,15,19,0.9)] backdrop-blur-[10px] border-b border-[rgba(124,124,255,0.2)] z-[1000] shadow-[0_4px_30px_rgba(124,124,255,0.1)]">
+      <div className="flex justify-between items-center w-full max-w-7xl px-8 md:px-4">
+        <div className="font-['Poppins',sans-serif] text-2xl md:text-xl font-bold bg-gradient-to-br from-[#7c7cff] to-[#ff6b6b] bg-clip-text text-transparent whitespace-nowrap">
+          ⚡JE
+        </div>
+        <div className="flex gap-10 md:gap-6">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              style={{
-                ...styles.navLink,
-                ...(activeSection === item.id ? styles.navLinkActive : {}),
-              }}
+              className={`
+                bg-none border-0 border-b-2 
+                font-['Poppins',sans-serif] text-base md:text-[0.85rem] font-semibold
+                cursor-pointer relative py-2 md:py-1 px-0
+                transition-all duration-300 ease-in-out
+                ${
+                  activeSection === item.id
+                    ? "text-[#7c7cff] border-b-[#7c7cff]"
+                    : "text-[#b3b3b3] border-b-transparent hover:text-[#7c7cff]"
+                }
+              `}
             >
               {item.label}
             </button>
@@ -68,85 +75,4 @@ export default function TopNavBar() {
       </div>
     </nav>
   );
-}
-
-const styles = {
-  nav: {
-    position: "fixed" as const,
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "70px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "rgba(15, 15, 19, 0.9)",
-    backdropFilter: "blur(10px)",
-    borderBottom: "1px solid rgba(124, 124, 255, 0.2)",
-    zIndex: 1000,
-    boxShadow: "0 4px 30px rgba(124, 124, 255, 0.1)",
-  },
-  navContent: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    maxWidth: "1200px",
-    padding: "0 2rem",
-  },
-  logo: {
-    fontFamily: "Poppins, sans-serif",
-    fontSize: "1.5rem",
-    fontWeight: "700",
-    background: "linear-gradient(135deg, #7c7cff, #ff6b6b)",
-    WebkitBackgroundClip: "text" as const,
-    WebkitTextFillColor: "transparent",
-    whiteSpace: "nowrap" as const,
-  },
-  navLinks: {
-    display: "flex",
-    gap: "2.5rem",
-  },
-  navLink: {
-    background: "none",
-    border: "none",
-    borderBottom: "2px solid transparent",
-    color: "#b3b3b3",
-    fontFamily: "Poppins, sans-serif",
-    fontSize: "1rem",
-    fontWeight: "600",
-    cursor: "pointer",
-    position: "relative" as const,
-    padding: "0.5rem 0",
-    transition: "color 0.3s ease, border-color 0.3s ease",
-  },
-  navLinkActive: {
-    color: "#7c7cff",
-    borderBottom: "2px solid #7c7cff",
-  },
-};
-
-// Mobile responsive adjustments
-if (typeof window !== "undefined" && window.innerWidth <= 768) {
-  styles.nav = {
-    ...styles.nav,
-    height: "60px",
-  };
-  styles.navContent = {
-    ...styles.navContent,
-    padding: "0 1rem",
-  };
-  styles.logo = {
-    ...styles.logo,
-    fontSize: "1.2rem",
-  };
-  styles.navLinks = {
-    ...styles.navLinks,
-    gap: "1.5rem",
-  };
-  styles.navLink = {
-    ...styles.navLink,
-    fontSize: "0.85rem",
-    padding: "0.25rem 0",
-  };
 }

@@ -8,28 +8,10 @@ export default function ProjectsGrid() {
   ];
 
   return (
-    <div style={styles.grid}>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 md:gap-8 mt-6">
       {projects.map((project) => (
         <ProjectCard key={project.id} title={project.title} description={project.description} />
       ))}
     </div>
   );
-}
-
-const styles = {
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "1.5rem",
-    marginTop: "1rem",
-  },
-};
-
-// Mobile responsive adjustments
-if (typeof window !== "undefined" && window.innerWidth <= 768) {
-  styles.grid = {
-    ...styles.grid,
-    gridTemplateColumns: "1fr",
-    gap: "1rem",
-  };
 }
